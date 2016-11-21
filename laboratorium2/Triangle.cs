@@ -22,34 +22,39 @@ namespace laboratorium2
             this.b = b;
             this.c = c;
 
-            alpha = default(K);
-            beta = default(K);
-            gamma = default(K);
+            T r = (dynamic)a * b * c * 2 / (4 * (dynamic)getField());
+
+            alpha = Math.Asin((dynamic)b / r) * 180 / Math.PI;
+            beta = Math.Asin((dynamic)c / r) * 180 / Math.PI;
+            gamma = Math.Asin((dynamic)a / r) * 180 / Math.PI;
         }
 
-        public Triangle(T a = default(T), T b = default(T), T c = default(T), K alpha = default(K), K beta = default(K), K gamma = default(K))
+        public Triangle(T a, K alpha, K beta)
         {
             this.a = a;
-            this.b = b;
-            this.c = c;
 
             this.alpha = alpha;
             this.beta = beta;
-            this.gamma = gamma;
+            this.gamma = 2 - (dynamic)alpha - beta;
+
+            T r = a / Math.Sin((dynamic)gamma); // 2R
+            this.b = r * Math.Sin((dynamic)alpha);
+            this.c = r * Math.Sin((dynamic)beta);
         }
 
-        public bool calculateMissingSides()
+        public Triangle(T a, T b, K beta)
         {
-            if (a.CompareTo(default(T)) == 0 && b.CompareTo(default(T)) != 0 && c.CompareTo(default(T)) != 0 && gamma.CompareTo(default(K)) != 0)
-            {
-                this.a = Math.Sqrt(Math.Pow((dynamic)b,2) + Math.Pow((dynamic)c,2) - 2 * ((dynamic)b * c * Math.Cos((dynamic)gamma)));
-                return true;
-            }
+            this.a = a;
+            this.b = b;
+            this.c = Math.Sqrt(Math.Pow((dynamic)a, 2) + Math.Pow((dynamic)b, 2) - 2 * ((dynamic)a * b * Math.Cos((dynamic)beta)));
 
-            return false;
+            T r = (dynamic)a * b * c * 2 / (4 * (dynamic)getField());
+
+            alpha = Math.Asin((dynamic)b / r) * 180 / Math.PI;
+            gamma = Math.Asin((dynamic)a / r) * 180 / Math.PI;
         }
 
-        public T getArea()
+        public T getField()
         {
             dynamic p = 0.5 * ((dynamic)a + (dynamic)b + (dynamic)c);
 
@@ -58,6 +63,10 @@ namespace laboratorium2
             return area;
         }
 
+        public T getPerimeter()
+        {
+            return (dynamic)a + b + c;
+        }
 
 
     }

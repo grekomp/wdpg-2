@@ -46,6 +46,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Triangle.cs" />
+    <Compile Include="TrojkatProstokatny.cs" />
+    <Compile Include="TrojkatRownoboczny.cs" />
+    <Compile Include="TrojkatRownoramienny.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

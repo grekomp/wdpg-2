@@ -10,14 +10,17 @@ namespace laboratorium2
     {
         static void Main(string[] args)
         {
-            Triangle<double, double> triangle = new Triangle<double, double>(b:4.0, c:5.0, gamma: 0.645771823);
+            Triangle<double, double> triangle = new Triangle<double, double>(a:3.0, alpha:0.5, beta:0.5);
+            TrojkatProstokatny<double, double> pros = new TrojkatProstokatny<double, double>(a:3, b:4);
 
-
-            Console.WriteLine(triangle.calculateMissingSides());
-            Console.WriteLine(triangle.a);
-            Console.WriteLine(triangle.b);
-            Console.WriteLine(triangle.c);
-            Console.WriteLine(triangle.gamma);
+            Console.WriteLine(pros.a);
+            Console.WriteLine(pros.b);
+            Console.WriteLine(pros.c);
+            Console.WriteLine(pros.alpha);
+            Console.WriteLine(pros.beta);
+            Console.WriteLine(pros.gamma);
+            Console.WriteLine(pros.getField());
+            Console.WriteLine(pros.getPerimeter());
 
             Console.ReadKey();
         }
